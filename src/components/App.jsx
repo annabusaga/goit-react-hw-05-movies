@@ -1,5 +1,6 @@
 export const App = () => {
   return (
+    <><h1></h1></>
     <div
       style={{
         height: '100vh',
