@@ -1,22 +1,31 @@
+import { getSearchMovie } from 'service/api';
+import { useEffect, useState } from 'react';
+import SearchForm from 'components/SearchForm/SearchForm';
+import MovieList from 'components/MovieList/MovieList';
+
 const Movies = () => {
-  //  // http-запис
-  // useEffect(() => {
-  //   first
+  const [movies, setMovies] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
+  const onSubmit = value => {
+    setSearchValue(value.trim());
+  };
 
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
-
+  useEffect(() => {
+    if (!searchValue) return;
+    async function fetchMovies() {
+      const {
+        data: { results },
+      } = await getSearchMovie(searchValue);
+      console.log(results);
+      setMovies(results);
+    }
+    fetchMovies();
+  }, [searchValue]);
   return (
-    <div>
-      <h2>Trending today</h2>
-      <ul>
-        {Array.map(movie => {
-          return <Link key={movie} to={`${movie}`}></Link>;
-        })}
-      </ul>
-    </div>
+    <>
+      <SearchForm onSubmit={onSubmit} />
+      {movies && <MovieList movies={movies} />}
+    </>
   );
 };
 
