@@ -1,11 +1,15 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getDetaildMovie } from 'service/api';
 import { Suspense, useEffect, useState } from 'react';
+import { useRef } from 'react';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  console.log(backLinkLocationRef);
 
   useEffect(() => {
     async function fetchDetaildMovie() {
@@ -29,6 +33,7 @@ const MovieDetails = () => {
       {isLoading && <p>Loading...</p>}
       {movie && (
         <>
+          <Link to={backLinkLocationRef.current}>Go back</Link>
           <img src="" alt="" />
           <h1>{movie.title}</h1>
           <h2>User Score:</h2>
