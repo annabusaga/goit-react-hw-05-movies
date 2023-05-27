@@ -1,0 +1,12 @@
+.list {
+    list-style: none;
+   
+
+}
+
+.item{
+    text-decoration: none;
+    color: green;
+    font-size: 25px;
+    font-weight: 200;
+}

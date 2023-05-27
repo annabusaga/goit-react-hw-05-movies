@@ -17,3 +17,7 @@ export async function getSearchMovie(query) {
 export async function getCast(movie_id) {
   return await axios(`${URL}movie/${movie_id}/credits?api_key=${KEY}`);
 }
+
+export async function getReviews(movie_id) {
+  return await axios(`${URL}movie/${movie_id}/reviews?api_key=${KEY}`);
+}
