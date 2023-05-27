@@ -1,5 +1,6 @@
 import { getTrendMovies } from 'service/api';
 import { useEffect, useState } from 'react';
+import css from './Home.module.css';
 
 import MovieList from 'components/MovieList/MovieList';
 
@@ -16,7 +17,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className={css.div}>
       <MovieList movies={movies} />
     </div>
   );
