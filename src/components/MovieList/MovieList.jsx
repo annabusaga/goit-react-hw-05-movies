@@ -7,7 +7,7 @@ const MovieList = ({ movies }) => {
     <ul className={css.list}>
       {movies.map(({ id, title, poster_path }) => {
         return (
-          <li className={css.item}>
+          <li className={css.item} key={id}>
             <Link
               className={css.link}
               state={{ from: location }}

@@ -2,12 +2,20 @@ import { getSearchMovie } from 'service/api';
 import { useEffect, useState } from 'react';
 import SearchForm from 'components/SearchForm/SearchForm';
 import MovieList from 'components/MovieList/MovieList';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [movies, setMovies] = useState(null);
-  const [searchValue, setSearchValue] = useState('');
+
+  const [params, steParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState(params.get('query') ?? '');
+
   const onSubmit = value => {
-    setSearchValue(value.trim());
+    if (value === '') {
+      return steParams({});
+    }
+    setSearchValue(value);
+    steParams({ query: value });
   };
 
   useEffect(() => {

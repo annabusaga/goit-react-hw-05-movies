@@ -10,7 +10,7 @@ const SearchForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(value);
+    onSubmit(value.trim());
   };
 
   return (
