@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import css from './SearchForm.module.css';
+import setParams from './SearchForm.module.css';
+import setSearchValue from './SearchForm.module.css';
 
 const SearchForm = ({ onSubmit }) => {
   const [value, setValue] = useState('');
@@ -10,6 +12,10 @@ const SearchForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (value === '') {
+      return setParams({});
+    }
+    setSearchValue(value);
     onSubmit(value.trim());
   };
 

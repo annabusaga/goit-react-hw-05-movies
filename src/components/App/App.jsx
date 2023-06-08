@@ -9,7 +9,7 @@ import css from './App.module.css';
 
 // import Home from './Home/Home';
 
-const Home = lazy(() => import('../../pages/Home'));
+const Home = lazy(() => import('../../pages/Home/Home'));
 const Layout = lazy(() => import('../Layout/Layout'));
 const MovieDetails = lazy(() => import('../../pages/MovieDetails'));
 const Movies = lazy(() => import('../../pages/Movies'));

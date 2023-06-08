@@ -10,6 +10,7 @@ const MovieDetails = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
   console.log(backLinkLocationRef);
+  console.log(movie);
 
   useEffect(() => {
     async function fetchDetaildMovie() {
@@ -34,7 +35,10 @@ const MovieDetails = () => {
       {movie && (
         <>
           <Link to={backLinkLocationRef.current}>Go back</Link>
-          <img src="" alt="" />
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
           <h1>{movie.title}</h1>
           <h2>User Score:</h2>
           <p>{movie.vote_average}</p>

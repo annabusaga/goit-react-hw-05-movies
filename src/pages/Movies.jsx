@@ -7,15 +7,11 @@ import { useSearchParams } from 'react-router-dom';
 const Movies = () => {
   const [movies, setMovies] = useState(null);
 
-  const [params, steParams] = useSearchParams();
+  const [params, setParams] = useSearchParams();
   const [searchValue, setSearchValue] = useState(params.get('query') ?? '');
 
   const onSubmit = value => {
-    if (value === '') {
-      return steParams({});
-    }
-    setSearchValue(value);
-    steParams({ query: value });
+    setParams({ query: value });
   };
 
   useEffect(() => {
