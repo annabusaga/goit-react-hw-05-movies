@@ -8,7 +8,7 @@ const Movies = () => {
   const [movies, setMovies] = useState(null);
 
   const [params, setParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState(params.get('query') ?? '');
+  const [searchValue] = useState(params.get('query') ?? '');
 
   const onSubmit = value => {
     setParams({ query: value });
